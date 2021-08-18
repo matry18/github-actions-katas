@@ -39,20 +39,3 @@ jobs:
       with:
         name: code
         path: .
-
-
-#  my-job:
-#    runs-on: ubuntu-latest
-#    container: gradle:6-jdk11
-#    steps:
-#      - uses: actions/checkout@v2
-#      - run: ci/build-app.sh
-#      - name: Test
-#        run: ci/unit-test-app.sh
-#      - name: Sjov
-#        run: echo "DU ER DEN BEDSTE! OG DU VED DET!"
-#      - name: Upload Repo
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: code
-#          path: .

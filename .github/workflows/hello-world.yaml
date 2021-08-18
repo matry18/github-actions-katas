@@ -1,7 +1,7 @@
 on: push
 name: Java CI
 jobs:
-  Clone-down-repo:
+  Clone-down:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
@@ -9,26 +9,26 @@ jobs:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
         with:
-          name: Clone-down-repo
+          name: Code
           path: .
   Test:
-    needs: Clone-down-repo
+    needs: Clone-down
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: Clone-down-repo
+          name: Code
           path: .          
       - run: chmod +x ci/unit-test.app.sh
   Build:
-    needs: Clone-down-repo
+    needs: Clone-down
     runs-on: ubuntu-latest
     container: gradle_6-jdk11
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: Clone-down-repo
+          name: Code
           path: .
       - name: Build
         run: chmod +x ci/build-apps.sh && ci/build-apps.sh

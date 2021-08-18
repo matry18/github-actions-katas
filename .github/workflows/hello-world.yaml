@@ -1,18 +1,44 @@
 name: hello-world
 on: push
+name: Java CI
 jobs:
-  my-job:
+  Clone down repo
+    runs-on: ubuntu-latest
+    contaner: gradle:6-jdk11
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+  Test
+    needs: Clone down repo
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-      - uses: actions/checkout@v2
       - run: ci/build-app.sh
-      - name: Test
-        run: ci/unit-test-app.sh
-      - name: Sjov
-        run: echo "DU ER DEN BEDSTE! OG DU VED DET!"
+  Build
+    needs: Clone down repo
+    runds-on: ubuntu-latest
+    container: gradle_6-jdk11
+    steps:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
         with:
           name: code
           path: .
+
+
+#  my-job:
+#    runs-on: ubuntu-latest
+#    container: gradle:6-jdk11
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: ci/build-app.sh
+#      - name: Test
+#        run: ci/unit-test-app.sh
+#      - name: Sjov
+#        run: echo "DU ER DEN BEDSTE! OG DU VED DET!"
+#      - name: Upload Repo
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: code
+#          path: .

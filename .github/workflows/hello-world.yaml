@@ -33,7 +33,7 @@ jobs:
         name: Code
         path: .
     - name: Build
-        run: chmod +x ci/build-apps.sh && ci/build-apps.sh
+      run: chmod +x ci/build-apps.sh && ci/build-apps.sh
     - name: Upload Repo
       uses: actions/upload-artifact@v2
       with:

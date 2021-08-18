@@ -13,6 +13,6 @@ jobs:
         run: echo "DU ER DEN BEDSTE! OG DU VED DET!"
       - name: Upload Repo
         uses: actions/upload-artifact@v2
-	with:
+        with:
           name: code
-	  path: .
+          path: .

@@ -2,7 +2,7 @@ name: hello-world
 on: push
 name: Java CI
 jobs:
-  Clone down repo
+  Clone-down-repo
     runs-on: ubuntu-latest
     contaner: gradle:6-jdk11
     steps:
@@ -10,13 +10,13 @@ jobs:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
   Test
-    needs: Clone down repo
+    needs: Clone-down-repo
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
       - run: ci/build-app.sh
   Build
-    needs: Clone down repo
+    needs: Clone-down-repo
     runds-on: ubuntu-latest
     container: gradle_6-jdk11
     steps:

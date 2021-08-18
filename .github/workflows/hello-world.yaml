@@ -8,6 +8,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Upload Repo
         uses: actions/upload-artifact@v2
+          with:
+            name: Clone-down-repo
+            path: .
   Test:
     needs: Clone-down-repo
     runs-on: ubuntu-latest

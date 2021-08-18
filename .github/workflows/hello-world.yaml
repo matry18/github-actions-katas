@@ -5,13 +5,14 @@ env:
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
 jobs:
   Docker-image
-  needs: [Build,Test]
-  steps:
-    - name: Download code
-      uses: actions/download-artifact@v2
-      with:
-        name: Code
-        path: .
+    runs-on: ubuntu-latest
+    needs: [Build,Test]
+    steps:
+      - name: Download code
+        uses: actions/download-artifact@v2
+        with:
+          name: Code
+          path: .
       run: chmod +x ci/build-docker.sh && ci/build-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA"
       run: chmod +x ci/push-docker.sh && ci/push-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA"
 

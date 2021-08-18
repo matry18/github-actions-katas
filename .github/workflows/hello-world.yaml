@@ -44,9 +44,9 @@ jobs:
         path: .
     - name: Upload code
       uses: actions/upload-artifact@v2
-        with:
-          name: Code
-          path: .
+      with:
+        name: Code
+        path: .
  Docker-image
     runs-on: ubuntu-latest
     needs: [Build,Test]
@@ -56,5 +56,5 @@ jobs:
         with:
           name: Code
           path: .
-      run: chmod +x ci/build-docker.sh && ci/build-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA"
-      run: chmod +x ci/push-docker.sh && ci/push-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA"
+      run: chmod +x ci/build-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/build-docker.sh
+      run: chmod +x ci/push-docker.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker.sh

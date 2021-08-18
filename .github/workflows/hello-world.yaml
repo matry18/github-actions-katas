@@ -11,3 +11,8 @@ jobs:
         run: ci/unit-test-app.sh
       - name: Sjov
         run: echo "DU ER DEN BEDSTE! OG DU VED DET!"
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+	with:
+          name: code
+	  path: .

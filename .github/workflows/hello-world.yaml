@@ -16,7 +16,7 @@ jobs:
       - run: ci/build-app.sh
   Build:
     needs: Clone-down-repo
-    runds-on: ubuntu-latest
+    runs-on: ubuntu-latest
     container: gradle_6-jdk11
     steps:
       - name: Upload Repo
